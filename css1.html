@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .example pre {
+            background-color: #e1e1e1;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background:linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+      
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+      
+        .navbar-brand:hover {
+            transform: translateY(-1px);
+            transition: transform 0.2s ease;
+        }
+      
+        .navbar-nav {
+            margin-left: auto;
+        }
+      
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+      
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+      
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white !important;
+        }
+      
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+      
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+      
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+      
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+      
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+      
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+      
+        /* Add animation for dropdown */
+        .dropdown-menu.show {
+            animation: slideIn 0.3s ease;
+        }
+      
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+      
+        /* Add badge for new items */
+        .badge-new {
+            background: #FF4B4B;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+      
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        </style>
+      </head>
+      <body>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+              <a class="navbar-brand d-flex align-items-center" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-code-square me-2" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                      <path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+                  </svg>
+                  Asify
+              </a>
+              
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link active" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-bs-toggle="dropdown">
+                              Courses
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="html1.html">
+                                  <i class="bi bi-code-slash me-2"></i>HTML
+                               
+                              </a></li>
+                              <li><a class="dropdown-item" href="css1.html">
+                                  <i class="bi bi-brush me-2"></i>CSS
+                              </a></li>
+                              <li><a class="dropdown-item" href="javascript.html">
+                                <i class="bi bi-brush me-2"></i>JAVASCRIPT
+                            </a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              
+                          </ul>
+                      </li>
+                      
+                    </li>
+                   
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+                              <i class="bi bi-search"></i>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+    <header>
+        <h1>CSS Basics</h1>
+    </header>
+
+    <main>
+
+        <h2>Introduction to CSS</h2>
+        <p>CSS (Cascading Style Sheets) is used to style and layout HTML elements, including the design, colors, and fonts.</p>
+
+        <h2>CSS Syntax</h2>
+        <p>The syntax of CSS consists of selectors, properties, and values. A CSS rule looks like this:</p>
+        <div class="example">
+            <pre>
+selector {
+    property: value;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Selectors</h2>
+        <p>CSS selectors are used to target HTML elements to apply styles. Some common selectors are:</p>
+        <ul>
+            <li><code>*</code> - Universal selector</li>
+            <li><code>#id</code> - ID selector</li>
+            <li><code>.class</code> - Class selector</li>
+            <li><code>element</code> - Element selector</li>
+        </ul>
+        <div class="example">
+            <pre>
+#header {
+    background-color: #333;
+    color: white;
+}
+
+.main {
+    font-size: 16px;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Colors</h2>
+        <p>CSS supports various color formats, including named colors, RGB, RGBA, HEX, and HSL.</p>
+        <div class="example">
+            <pre>
+#header {
+    background-color: rgb(255, 0, 0);
+    color: #ffffff;
+}
+
+h1 {
+    color: hsl(0, 100%, 50%);
+}
+            </pre>
+        </div>
+
+        <h2>CSS Backgrounds</h2>
+        <p>CSS allows you to add background colors, images, and gradients.</p>
+        <div class="example">
+            <pre>
+body {
+    background-color: #f4f4f4;
+    background-image: url('background.jpg');
+    background-size: cover;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Box Model</h2>
+        <p>The box model consists of content, padding, border, and margin. Understanding the box model is essential for layout management.</p>
+        <div class="example">
+            <pre>
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #333;
+    margin: 15px;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Positioning</h2>
+        <p>CSS positioning allows you to control where elements appear on a page. There are several positioning types: static, relative, absolute, fixed, and sticky.</p>
+        <div class="example">
+            <pre>
+.positioned {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Flexbox</h2>
+        <p>Flexbox is a layout module that allows for flexible and responsive layouts.</p>
+        <div class="example">
+            <pre>
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    flex: 1;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Grid</h2>
+        <p>CSS Grid Layout allows you to create complex grid-based designs with ease.</p>
+        <div class="example">
+            <pre>
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.item {
+    grid-column: span 2;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Typography</h2>
+        <p>CSS enables you to style fonts, set sizes, line heights, and text alignments.</p>
+        <div class="example">
+            <pre>
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    line-height: 1.5;
+    text-align: center;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Transitions</h2>
+        <p>CSS transitions allow you to change property values smoothly over a specific duration.</p>
+        <div class="example">
+            <pre>
+.button {
+    transition: background-color 0.5s ease;
+}
+
+.button:hover {
+    background-color: #ff0000;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Animations</h2>
+        <p>CSS animations enable you to create dynamic and complex animations on elements.</p>
+        <div class="example">
+            <pre>
+@keyframes example {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: example 2s infinite;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Media Queries</h2>
+        <p>Media queries allow you to apply styles based on device characteristics like screen width.</p>
+        <div class="example">
+            <pre>
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}
+            </pre>
+        </div>
+
+        <h2>CSS Variables</h2>
+        <p>CSS variables allow you to reuse values throughout your stylesheet, making it easier to maintain.</p>
+        <div class="example">
+            <pre>
+:root {
+    --main-color: #333;
+}
+
+body {
+    color: var(--main-color);
+}
+            </pre>
+        </div>
+
+        <h2>CSS Pseudo-classes</h2>
+        <p>Pseudo-classes allow you to style elements based on their state, like `hover` and `active`.</p>
+        <div class="example">
+            <pre>
+a:hover {
+    color: #ff0000;
+}
+
+input:focus {
+    border-color: #00ff00;
+}
+            </pre>
+        </div>
+
+        <h2>CSS Pseudo-elements</h2>
+        <p>Pseudo-elements allow you to style parts of an element, such as the first letter or line.</p>
+        <div class="example">
+            <pre>
+p::first-letter {
+    font-size: 2em;
+}
+
+p::after {
+    content: " End of paragraph";
+}
+            </pre>
+        </div>
+
+        <h2>CSS Clipping and Masking</h2>
+        <p>Clipping and masking are used to hide portions of an element and create unique visual effects.</p>
+        <div class="example">
+            <pre>
+img {
+    clip-path: circle(50% at 50% 50%);
+}
+            </pre>
+        </div>
+
+        <h2>CSS Filters</h2>
+        <p>CSS filters allow you to apply visual effects like blurring and color shifting.</p>
+        <div class="example">
+            <pre>
+img {
+    filter: blur(5px);
+}
+            </pre>
+        </div>
+
+        <h2>CSS Best Practices</h2>
+        <p>Best practices include writing modular, maintainable CSS, using semantic naming conventions, and avoiding inline styles.</p>
+
+    </main>
+    <br>
+    <br>
+    <br>
+
+    <footer>
+        <p>&copy; 2025 Asify. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
